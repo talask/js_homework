@@ -18,16 +18,16 @@ console.log(x);
 
 // console.log(text);
 // let text='string';
-// Ответ: Uncaught ReferenceError: text is not defined
+// Ответ: Error: text is not defined
 
 // const y = 'string';
 //       y = 'string №2';
 // console.log(y);
-// Ответ: Uncaught TypeError: Assignment to constant variable.
+// Ответ: Error: Assignment to constant variable.
 
 // let someVariable = 15;
 // let someVariable = 10;
-//  Ответ: Uncaught SyntaxError: Identifier 'someVariable' has already been declared
+//  Ответ: Error: Identifier 'someVariable' has already been declared
 
 // ***********************
 // *       СТРОКИ        *
