@@ -116,6 +116,6 @@ console.log('+\'10\' + 1  складываются как числа, т.к. \'+
 console.log(undefined + 2); 
 console.log('undefined + 2  NaN, т.к.  \'undefined\' - неопределенное значение не приводится к числу');
 console.log(null + 5); 
-console.log('null + 5  складываются как числа,  т.к. второй операнд число , то null = 0');
+console.log('null + 5  складываются как числа,  т.к. второй операнд число , null = 0');
 console.log(true + undefined); 
 console.log('true + undefined  складываются как числа,  т.к.  \'undefined\' - неопределенное значение не приводится к числу ответ NaN');

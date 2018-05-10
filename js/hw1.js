@@ -36,7 +36,7 @@ console.log( "СТРОКИ" );
 let string = 'some test string';
 console.log( "STRING - " +  string);
 // 1
-console.log(string[0] + " " + string.slice(-1));
+console.log(string[0] + " " + string[string.length - 1]);
 
 // 2
 console.log(string[0].toUpperCase() + string.slice(1,(string.length - 1)) + string.slice(-1).toUpperCase());
@@ -45,14 +45,14 @@ console.log(string[0].toUpperCase() + string.slice(1,(string.length - 1)) + stri
 console.log(string.indexOf('string'));
 
 // 4
-let index = string.indexOf(" ") + 1;
-console.log(string.indexOf(" ",index));
+let index = string.indexOf(" ");
+console.log(string.indexOf(" ", index + 1));
 
 // 5
-console.log("==" + string.substr(4, 4) + "==");
+console.log("==" + string.substr(4, 5) + "==");
 
 // 6 
-console.log("===" + string.slice(4, 8) + "===");
+console.log("===" + string.slice(4, 9) + "===");
 
 // 7
 string = string.slice(0, string.length - 6);
