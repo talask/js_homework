@@ -49,14 +49,14 @@ let index = string.indexOf(" ") + 1;
 console.log(string.indexOf(" ",index));
 
 // 5
-console.log("==" + string.substr(5, 4) + "===");
+console.log("==" + string.substr(4, 4) + "==");
 
 // 6 
-console.log("==" + string.slice(5, 9) + "===");
+console.log("===" + string.slice(4, 8) + "===");
 
 // 7
 string = string.slice(0, string.length - 6);
-console.log("==" + string + "===");
+console.log("==" + string + "==");
 
 // 8
 let a = 20;
@@ -82,7 +82,7 @@ let min_random = 0,
 console.log(Math.floor(Math.random() * max_random));
 
 // 4
-let summa = 0.6 +0.7;
+let summa = 0.6 + 0.7;
 let summa1 = (0.6*10 + 0.7*10)/10;
 console.log(summa.toFixed(1));
 console.log(summa1);
