@@ -35,8 +35,7 @@ console.log("10! = " + factorial_num);
 let string_count = "Считаем до 10и: ";
 
 for(k = 1; k <= 10; k++) {
-    string_count += k !== 10 ? k + ", "
-                              : k;
+    string_count += k !== 10 ? k + ", " : k;
 }
 console.log(string_count);
 
