@@ -42,12 +42,11 @@ console.log(string_count);
 // 5
 let string = "JavaScript is a pretty good language";
 let string_camel = "";
+    j = -1;
 
-while (j < string.length) {
+while (++j < string.length) {
     string_camel += string[j] === " " ? string[++j].toUpperCase()
                                       : string[j];
-    j++;                                      
-
 }
 console.log("WHILE - " + string + " - " + string_camel);
 
