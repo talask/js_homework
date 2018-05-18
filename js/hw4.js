@@ -16,7 +16,6 @@ function multiply () {
     if ((message.length > 0) && (flag === 1)) { 
         return message + 'аргумент(ы) не цифра\n Произведение равно ' + result;
     }
-
     return 'Произведение равно ' + result;
 }
 //console.log(multiply);
@@ -50,10 +49,52 @@ function getCodeStringFromText (str) {
         j = str.length;
 
     while (++i < j) {
-            new_string += i < (j - 1) ? str.charCodeAt(i) + " " 
+            new_string += i < (j - 1) ? str.charCodeAt(i) + ' ' 
                                       : str.charCodeAt(i);
         }
     return new_string;
 }
 console.log(getCodeStringFromText);
-console.log ("=" + getCodeStringFromText('hello') + "=");
+console.log ('=' + getCodeStringFromText('hello') + '=');
+
+// EditTask
+let todos = [
+    {
+      text: 'Learn JavaScript',
+      id: 0
+    },
+    {
+      text: 'Learn Angular',
+      id: 1
+    }
+  ];
+
+function editTask(id, text) {
+    if (id !== 0 && !id) return new Error('id required');
+    if (isNaN(id)) return new Error('id must be a number');
+    id = Number(id);
+    if (typeof text !== 'string') return new Error('text is not a string');
+    if (!text.length) return new Error('text empty');
+
+    for(el of todos) {
+        console.log(el);
+    }
+
+    let todo;
+
+    for (let i = 0; i < todos.length; i++ ) {
+        if (todos[i].id === id) {
+            todo = todos[i];
+            todos[i].text = text;    
+        break;
+        }
+    }
+
+    for(el of todos) {
+        console.log(el);
+    }
+
+  return todo || 'task not found'
+}
+
+console.log ( editTask(1, 'Learn React'));
