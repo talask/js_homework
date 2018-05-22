@@ -4,7 +4,9 @@ function multiply () {
         message = '',
         flag = 0,
         max = arguments.length;
+
     if (max === 0) return 'Данные не переданы';
+
     for(let i = 0; i < max; i++) {
         if(typeof(arguments[i]) === 'number') { 
             flag = 1;
@@ -13,11 +15,14 @@ function multiply () {
             message += i+ '-й '
         }
     }
+
     if ((message.length > 0) && (flag === 1)) { 
         return message + 'аргумент(ы) не цифра\n Произведение равно ' + result;
     }
+
     return 'Произведение равно ' + result;
 }
+
 //console.log(multiply);
 console.log (multiply(12, 3, 'Hello' , 456));
 
@@ -33,8 +38,10 @@ function reverseString(str) {
     while (j--) {
         new_string += str[j];
     }
+
     return new_string;
 }
+
 //console.log(reverseString);
 console.log (reverseString(''));
 
@@ -52,6 +59,7 @@ function getCodeStringFromText (str) {
             new_string += i < (j - 1) ? str.charCodeAt(i) + ' ' 
                                       : str.charCodeAt(i);
         }
+        
     return new_string;
 }
 console.log(getCodeStringFromText);
