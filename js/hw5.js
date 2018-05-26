@@ -116,7 +116,7 @@ let arrayObj = [
 arrayObj.sort((prev, next) => prev.info.cores - next.info.cores);
 console.log(arrayObj);
 
-// 11
+// 11 Приучаю себя к стрелочным функциям, но не совсем 
 const products = [
     {title: 'prod1', price: 5.2},  {title: 'prod2', price: 0.19},
     {title: 'prod3', price: 15},  {title: 'prod4', price: 25},
@@ -127,8 +127,43 @@ const products = [
 function filterCollection(arr, bprice, eprice) {
     return newProducts = arr.filter(item => item.price >= bprice && item.price <= eprice).sort((prev, next) => prev.price - next.price);
 }
+
 console.log(filterCollection(products, 10, 50));
+
+let filterArray = (arr, bprice, eprice) =>  arr.filter(item => item.price >= bprice && item.price <= eprice).sort((prev, next) => prev.price - next.price);
+
+console.log(filterArray(products, 5, 50));
 
 // 4 из презентации массивы Es5 задачи: 2 и 5 (пятую задачу можно сделать только  сортировкой и reduce )
 
 // 2
+
+let arrayNumber = [1, 2, 3, 5, 8, 9, 10];
+
+let newNumberArray = arrayNumber.map((item) => item%2 ? {digit: item, odd: false} : {digit: item, odd: true} ); 
+console.log(newNumberArray);
+
+// 5
+
+let beginArray = [
+    {char: 'a', index: 12}, {char: 'w', index: 8}, {char: 'Y', index: 10},
+    {char: 'p', index: 3}, {char: 'p', index: 2}, {char: 'N', index: 6},
+    {char: ' ', index: 5}, {char: 'y', index: 4}, {char: 'r', index: 13},
+    {char: 'H', index: 0}, {char: 'e', index: 11}, {char: 'a', index: 1},
+    {char: ' ', index: 9}, {char: '!', index: 14}, {char: 'e', index: 7}
+];
+// 1-й вариант
+function newString(arr){
+    let temp =[];
+    
+    for(el of arr) {
+        temp[el.index] = el.char;
+    }
+    return temp.join(''); 
+}
+
+console.log(newString(beginArray));
+
+// 2-й вариант
+let magicString = beginArray.sort((prev, next) => prev.index - next.index).reduce((previous, current) => previous + current.char ,'');
+console.log(magicString);
