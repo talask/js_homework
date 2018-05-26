@@ -92,10 +92,43 @@ console.log(someArray);
 
 // 3
 function makeArray(arr, begin, end){
-    let newArray = arr.slice(begin,end);
+    let newArray = arr.slice(begin, end+1);
     return newArray;
 }
 
 console.log(makeArray(someArray, 2, 5));
 
 // 8
+let hash = [[14, 45], [1], ['a', 'd', 'c']];
+
+hash.sort((prev, next) => prev.length - next.length);
+console.log(hash);
+
+// 10
+let arrayObj = [
+    {cpu: 'intel', info: {cores: 2, cache: 3}},
+    {cpu: 'intel', info: {cores: 4, cache: 4}},
+    {cpu: 'intel', info: {cores: 1, cache: 1}},
+    {cpu: 'intel', info: {cores: 3, cache: 2}},
+    {cpu: 'intel', info: {cores: 4, cache: 2}}
+];
+
+arrayObj.sort((prev, next) => prev.info.cores - next.info.cores);
+console.log(arrayObj);
+
+// 11
+const products = [
+    {title: 'prod1', price: 5.2},  {title: 'prod2', price: 0.19},
+    {title: 'prod3', price: 15},  {title: 'prod4', price: 25},
+    {title: 'prod5', price: 18.9},  {title: 'prod6', price: 8},
+    {title: 'prod7', price: 19},  {title: 'prod8', price: 63}
+];
+
+function filterCollection(arr, bprice, eprice) {
+    return newProducts = arr.filter(item => item.price >= bprice && item.price <= eprice).sort((prev, next) => prev.price - next.price);
+}
+console.log(filterCollection(products, 10, 50));
+
+// 4 из презентации массивы Es5 задачи: 2 и 5 (пятую задачу можно сделать только  сортировкой и reduce )
+
+// 2
