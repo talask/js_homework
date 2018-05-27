@@ -43,13 +43,30 @@ function addTask(text) {
     // Add li at ul
     ul.insertAdjacentElement("afterbegin", listTemplate(newTask))
 }
-
+// ? нужно ли создавать копию массива
+// ? нужно ли возвращать массив
+// ? нужно ли проверять аргументы
 // Delete task
-function deleteTask(id) {
+function deleteTask(id, arr) {
     // найти по id элемент массива и удалить из массива
     // найти элемент на страницы с таким же id и удалить его из разметки
+   let lis = document.getElementsByClassName('list-group-item');
+    for (let el of arr) {
+        if(el.id == id) {
+           arr.splice(arr.indexOf(el),1);
+            for (let attr of lis) {
+                if(attr.dataset.id == id) {
+                    attr.remove(); 
+                }
+            }    
+            return arr, 'Element with id = ' + id + ' has been deleted';
+        }
+    }
+return arr;  
 }
-
+// ? проверка есть ли такой єлемент
+// ? есди нет, то создать
+// ? если есть, то заменить текст textcontent || innerHTML
 // Alert
 function message(text) {
     // удалять существующий алерт
@@ -57,6 +74,7 @@ function message(text) {
     // дать ему класс alert alert-info
     // вставить в алерт текст
     // добавить этот алерт в начало контейнра перед формой
+
 }
 
 

@@ -157,7 +157,7 @@ let beginArray = [
 function newString(arr){
     let temp =[];
     
-    for(el of arr) {
+    for(let el of arr) {
         temp[el.index] = el.char;
     }
     return temp.join(''); 
