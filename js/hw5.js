@@ -1,3 +1,4 @@
+console.log("HOMEWORK 5");
 // 1
 let array_string = ['i', 'like', 'tea'],
     array_number = ['7', '80', '65'],

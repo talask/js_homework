@@ -1,3 +1,4 @@
+console.log("HOMEWORK 4");
 // 1
 function multiply () {
     let result = 1,
