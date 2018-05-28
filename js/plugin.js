@@ -83,10 +83,8 @@ function message(text) {
     }
     let alert =  document.createElement('div');
         alert.setAttribute('class', 'alert alert-info'); 
+        alert.textContent = text;
         container.insertAdjacentElement("afterbegin", alert);
-   
-    let alerts =  container.getElementsByClassName('alert alert-info');
-    alerts[0].textContent = text;
 }
 
 
