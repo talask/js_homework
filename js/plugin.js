@@ -49,8 +49,9 @@ function deleteTask(id) {
     // найти по id элемент массива и удалить из массива
     // найти элемент на страницы с таким же id и удалить его из разметки
     
+    let id1 = id;
     id = Number(id);
-    if(!id && id !== 0) return tasks, message('Element is not a number');
+    if(!id && id !== 0 || !id1) return tasks, message('Element is not a number');
     let lis = document.getElementsByClassName('list-group-item');
     for (let el of tasks) {
         if(el.id == id) {
