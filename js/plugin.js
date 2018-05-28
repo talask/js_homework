@@ -75,11 +75,12 @@ function message(text) {
     // добавить этот алерт в начало контейнра перед формой
     
     let container = document.querySelector('.container');
-    let isAlert =   container.querySelector('div.alert.alert-info');
-    
-    if(isAlert) { 
-        let alerts =  container.getElementsByClassName('alert alert-info');
-        container.removeChild(alerts[0]);
+    let alerts =  container.getElementsByClassName('alert alert-info');
+
+    if(alerts.length > 0) { 
+        for(let el of alerts) {
+        container.removeChild(el);
+        }
     }
     let alert =  document.createElement('div');
         alert.setAttribute('class', 'alert alert-info'); 
