@@ -74,7 +74,7 @@ function message(text) {
     // вставить в алерт текст
     // добавить этот алерт в начало контейнра перед формой
     
-    let container = document.querySelector('form');
+    let container = document.querySelector('container, form');
     let parentform = container.parentElement;
     let alerts =  parentform.getElementsByClassName('alert alert-info');
 
