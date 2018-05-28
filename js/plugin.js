@@ -74,7 +74,7 @@ function message(text) {
     // вставить в алерт текст
     // добавить этот алерт в начало контейнра перед формой
     
-    let container = document.querySelector('.container');
+    let container = document.querySelector('.card-body');
     let alerts =  container.getElementsByClassName('alert alert-info');
 
     if(alerts.length > 0) { 
