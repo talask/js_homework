@@ -117,7 +117,7 @@ let arrayObj = [
 arrayObj.sort((prev, next) => prev.info.cores - next.info.cores);
 console.log(arrayObj);
 
-// 11 Приучаю себя к стрелочным функциям, но не совсем 
+// 11  
 const products = [
     {title: 'prod1', price: 5.2},  {title: 'prod2', price: 0.19},
     {title: 'prod3', price: 15},  {title: 'prod4', price: 25},

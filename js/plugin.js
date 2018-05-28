@@ -43,30 +43,29 @@ function addTask(text) {
     // Add li at ul
     ul.insertAdjacentElement("afterbegin", listTemplate(newTask))
 }
-// ? нужно ли создавать копию массива
-// ? нужно ли возвращать массив
-// ? нужно ли проверять аргументы
+
 // Delete task
-function deleteTask(id, arr) {
+function deleteTask(id) {
     // найти по id элемент массива и удалить из массива
     // найти элемент на страницы с таким же id и удалить его из разметки
-   let lis = document.getElementsByClassName('list-group-item');
-    for (let el of arr) {
+    
+    id = Number(id);
+    if(!id && id !== 0) return tasks, message('Element is not a number');
+    let lis = document.getElementsByClassName('list-group-item');
+    for (let el of tasks) {
         if(el.id == id) {
-           arr.splice(arr.indexOf(el),1);
+            tasks.splice(tasks.indexOf(el),1);
             for (let attr of lis) {
                 if(attr.dataset.id == id) {
                     attr.remove(); 
                 }
             }    
-            return arr, 'Element with id = ' + id + ' has been deleted';
+            return tasks, message('Element with id = ' + id + ' has been deleted');
         }
     }
-return arr;  
+return tasks, message('Element with id = ' + id + ' not found');  
 }
-// ? проверка есть ли такой єлемент
-// ? есди нет, то создать
-// ? если есть, то заменить текст textcontent || innerHTML
+
 // Alert
 function message(text) {
     // удалять существующий алерт
@@ -74,7 +73,20 @@ function message(text) {
     // дать ему класс alert alert-info
     // вставить в алерт текст
     // добавить этот алерт в начало контейнра перед формой
-
+    
+    let container = document.querySelector('.container');
+    let isAlert =   container.querySelector('div.alert.alert-info');
+    
+    if(isAlert) { 
+        let alerts =  container.getElementsByClassName('alert alert-info');
+        container.removeChild(alerts[0]);
+    }
+    let alert =  document.createElement('div');
+        alert.setAttribute('class', 'alert alert-info'); 
+        container.insertAdjacentElement("afterbegin", alert);
+   
+    let alerts =  container.getElementsByClassName('alert alert-info');
+    alerts[0].textContent = text;
 }
 
 
