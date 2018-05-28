@@ -74,18 +74,19 @@ function message(text) {
     // вставить в алерт текст
     // добавить этот алерт в начало контейнра перед формой
     
-    let container = document.querySelector('.card-body');
-    let alerts =  container.getElementsByClassName('alert alert-info');
+    let container = document.querySelector('form');
+    let parentform = container.parentElement;
+    let alerts =  parentform.getElementsByClassName('alert alert-info');
 
     if(alerts.length > 0) { 
         for(let el of alerts) {
-        container.removeChild(el);
+            parentform.removeChild(el);
         }
     }
     let alert =  document.createElement('div');
         alert.setAttribute('class', 'alert alert-info'); 
         alert.textContent = text;
-        container.insertAdjacentElement("afterbegin", alert);
+        parentform.insertAdjacentElement("afterbegin", alert);
 }
 
 
