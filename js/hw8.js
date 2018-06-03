@@ -37,42 +37,34 @@ console.log(user.getName());
 
 const someObj = {
     height: 10,
-    inc: augment
-};
-    
-function augment(){
-    let a = this.height;
-    delete this.height;
-    return ++a; 
+    augment: function() {
+        return this.height = ++this.height;
     }
-
-someObj.height = someObj.inc()
-console.log(someObj.height);
+};
+console.log('Height before use someObj.augment(); - ' + someObj.height);
+someObj.augment();
+console.log('Height after someObj.augment(); - ' + someObj.height);
 
 // 5
 
 const numerator = {
     value: 1,
     double: function(){
-        let a = this.value;
-        delete this.value; 
-        return a*2; 
+        this['value'] = this.value*2; 
+        return this;
     },
     plusOne: function(){ 
-        let a = this.value;
-        delete this.value; 
-       // this.value + 1; 
-        return ++a; },
+       this['value'] = ++this.value;
+        return this; 
+    },
     minusOne: function(){ 
-        let a = this.value;
-        delete this.value; 
-        //this.value - 1; 
-        return --a; 
+        this['value'] = --this.value; 
+        return this; 
     }
 }
 
-//numerator.value = numerator.double().plusOne();
-//console.log(numerator.value);
+numerator.double().plusOne().plusOne().minusOne();
+console.log('numerator.value = ' + numerator.value);
 
 // 6
 const user1 = { name: 'Abraham' },
