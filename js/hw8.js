@@ -1,4 +1,5 @@
 console.log('HOMEWORK 8');
+// 1-я часть
 // 1
 
 const retangle = {

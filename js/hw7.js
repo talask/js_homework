@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectSeasons = document.getElementById('seasons');
     const input = document.querySelector('input');
     let variable = selectSeasons.options[selectSeasons.selectedIndex].text.toLowerCase();
+    
     // ВАРИАНТ 1 - ЕСЛИ НЕ ИСПОЛЬЗОВАТЬ VALUE B OPTION
     // записываю значение в input при загрузке страницы 
     changeWear(variable);
