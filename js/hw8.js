@@ -1,4 +1,4 @@
-console.log('HOMEWORK 8');
+console.log(' === HOMEWORK 8 ===');
 // 1-я часть
 // 1
 
