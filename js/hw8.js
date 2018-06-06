@@ -20,7 +20,7 @@ const price = {
         return this.price;
     },
     getPriceWithDiscount: function(){
-        return (100 - this.discount.slice(0,this.discount.length - 1)) * this.price / 100;
+        return (100 - parseInt(this.discount)) * this.price / 100;
     }
 };
 console.log(price.getPrice());
@@ -127,11 +127,9 @@ const element = {
     marginTop: '5px',
     marginBottom: '5px',
     getFullHeight: function() {
-        return sliceSize(this.height) + sliceSize(this.marginTop) + sliceSize(this.marginBottom);
+        return parseInt(this.height) + parseInt(this.marginTop) + parseInt(this.marginBottom);
     }
 };
-
-function sliceSize(a) { return  Number(a.slice(0, a.length - 2)); }
 
 console.log('element.getFullHeight() = ' + element.getFullHeight());
 
