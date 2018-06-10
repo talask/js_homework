@@ -64,3 +64,38 @@ var greet = 'Hello';
 console.log(" Ошибка при выводе 'greet + text' т.к. переменная text не видна в global LE" );
 
 // 3
+
+function minus(a){
+    a = typeof Number(a) !== 'number' ?  0 : Number(a);
+    return function(b) { 
+        b = typeof Number(a) !== 'number' || !b ?  0 : Number(b);
+        return !a ? b : a - b;
+    }
+}
+
+console.log("minus(10)(6) = " + minus(10)(6));
+console.log("minus(5)(6) = " + minus(5)(6));
+console.log("minus(10)() = " + minus(10)());
+console.log("minus()(6) = " + minus()(6));
+console.log("minus()() = " + minus()());
+
+// 4 
+
+let p;
+
+function MultiplyMaker (a) {
+    a = typeof a !== 'number' || !a ? 1 :  Number(a);
+    
+    return function() {
+        console.log(p);
+        p = typeof p === 'undefined' ? a : p * a;
+        return p;
+    }
+}
+
+const multiply = MultiplyMaker(2);
+console.log("multiply = " + multiply);
+console.log("multiply(2) = " + multiply(2));
+console.log("multiply(1) = " + multiply(1));
+console.log("multiply(3) = " + multiply(3));
+console.log("multiply(10) = " + multiply(10));
