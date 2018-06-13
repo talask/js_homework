@@ -81,21 +81,56 @@ console.log("minus()() = " + minus()());
 
 // 4 
 
-let p;
-
 function MultiplyMaker (a) {
     a = typeof a !== 'number' || !a ? 1 :  Number(a);
-    
-    return function() {
-        console.log(p);
-        p = typeof p === 'undefined' ? a : p * a;
+    let p = a;
+    return function(b) {
+        b = typeof b !== 'number' || !b ? 1 :  Number(b);
+        p *=  b;
         return p;
     }
 }
 
 const multiply = MultiplyMaker(2);
-console.log("multiply = " + multiply);
 console.log("multiply(2) = " + multiply(2));
-console.log("multiply(1) = " + multiply(1));
+console.log("multiply(1) = " +  multiply(1));
 console.log("multiply(3) = " + multiply(3));
 console.log("multiply(10) = " + multiply(10));
+
+// 5
+
+let StringWork = (function() {
+    
+    let str;
+
+    function SetString(val) {
+        val = !val ? '' :
+              typeof val == 'number' ? String(val) : val;
+        str = val;
+    }
+
+    function GetString () {
+        return str;
+    }
+
+    function GetStringLen() {
+        return str.length;
+    }
+    function StringReverse() {
+       str = str.split('').reverse().join('');
+    }
+
+    return {
+        setString: SetString,
+        getString: GetString,
+        getStringLen: GetStringLen,
+        stringReverse: StringReverse
+    };
+})();
+
+StringWork.setString('abcde');
+console.log(StringWork.getString());
+console.log(StringWork.getStringLen());
+StringWork.stringReverse();
+console.log(StringWork.getString());
+
