@@ -1,4 +1,4 @@
-// const quiz = (function(){
+ const quiz = (function(){
 
     let test = [
 
@@ -128,7 +128,6 @@
     return {
            run: run
     }
-
 })();
 
 quiz.run();
