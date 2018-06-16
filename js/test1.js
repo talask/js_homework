@@ -37,22 +37,23 @@ const quiz = (function(){
             }
     }
     function getPrompt(a, b) {
-
-            switch(a.toLowerCase()) {
-                case b: 
-                    counter++;
-                    
-                    if(counter === test.length) 
-                        console.log( 'У Вас ' + counter + ' балл(а)(ов). Поздравляем! Вы ответили правильно на все вопросы!');
-                    else
-                        console.log('Ваш ответ правильный, у Вас ' + counter + ' балл(а)(ов)');
-                    return true;
-                case 'q': 
-                    console.log('Вы прервали опрос, у Вас ' + counter + ' балл(а)(ов)');
-                    return false;
-                default: 
+        if(a === null || a === '') a = 'jkhk';
+        switch(a.toLowerCase()) {
+            case b: 
+                counter++;
+                if(counter === test.length) 
+                    console.log( 'У Вас ' + counter + ' балл(а)(ов). Поздравляем! Вы ответили правильно на все вопросы!');
+                else
+                    console.log('Ваш ответ правильный, у Вас ' + counter + ' балл(а)(ов)');
+                    console.log('--------------------------------------');
+                return true;
+            case 'q': 
+                console.log('Вы прервали опрос, у Вас ' + counter + ' балл(а)(ов)');
+                return false;
+            default: 
                 console.log('Ваш ответ не правильный, Вы набрали ' + counter + ' балл(а)(ов)');
                 console.log('Давайте попробуем ещё)) , Ваш текущий счёт 0 баллов ))' );
+                console.log('--------------------------------------');
                 return run();
             }  
         }
