@@ -1,53 +1,134 @@
-const fruits = [
-    {
-        name: "orange",
-        weight: 150
-    },
-    {
-        name: "pineapple",
-        weight: 500
-    },
-    {
-        name: "kiwi",
-        weight: 100
-    },
-    {
-        name: "apple",
-        weight: 250
-    },
-    {
-        name: "pear",
-        weight: 200
-    },
-    {
-        name: "mango",
-        weight: 300
-    },
-    {
-        name: "apple",
-        weight: 99
-    },
-    {
-        name: "grapefruit",
-        weight: 400
-    },
-    {
-        name: "grapefruit",
-        weight: 300
-    },
+// const quiz = (function(){
+
+    let test = [
+
+        {
+
+            question: 'Жили у бабуси два весёлых',
+
+            answers: [ 'Енота', 'Гуся', 'Поросёнка' ],
+
+            rigthAnswer: '1'
+
+        },
+
+        {
+
+            question: 'Он от бабушки ушёл, он от дедушки ушёл',
+
+            answers: [ 'Колобок', 'Чебурашка', 'Буратино' ],
+
+            rigthAnswer: '0'
+
+        },
+
+        {
+
+            question: 'Как звали трёх поросят?',
+
+            answers: [ 'Хрум-Хрум, Хрям-Хрям, Хрусь-Хрусь', 'Пух-Пух, Пум-Пум, Пур-Пур', 'Наф-Наф, Ниф-Ниф, Нуф-Нуф' ],
+
+            rigthAnswer: '2'
+
+        }
+
+    ],
+
+    counter = 0;
+
+
+
+    function run() {
+
+        rules();
+
+        counter = 0;
+
+        for(let val of test) {
+
+            alertText(val);
+
+            let q = prompt('Ваш вариант','');
+
+            if(!getPrompt(q,val.rigthAnswer)) break;
+
+        }
+
+    }
+
+    function alertText(o) {
+
+        console.log(o.question);
+
+            for(let key in  o.answers) {
+
+                console.log(key + ' - ' + o.answers[key]);
+
+            }
+
+    }
+
+    function getPrompt(a, b) {
+
+        if(a === null || a === '') a = 'jkhk';
+
+        switch(a.toLowerCase()) {
+
+            case b: 
+
+                counter++;
+
+                if(counter === test.length) 
+
+                    console.log( 'У Вас ' + counter + ' балл(а)(ов). Поздравляем! Вы ответили правильно на все вопросы!');
+
+                else
+
+                    console.log('Ваш ответ правильный, у Вас ' + counter + ' балл(а)(ов)');
+
+                    console.log('--------------------------------------');
+
+                return true;
+
+            case 'q': 
+
+                console.log('Вы прервали опрос, у Вас ' + counter + ' балл(а)(ов)');
+
+                return false;
+
+            default: 
+
+                console.log('Ваш ответ не правильный, Вы набрали ' + counter + ' балл(а)(ов)');
+
+                console.log('Давайте попробуем ещё)) , Ваш текущий счёт 0 баллов ))' );
+
+                console.log('--------------------------------------');
+
+                return run();
+
+            }  
+
+        }
+
     
-];
 
-for (let i of fruits) { 
-    if (((i.name === 'apple') || (i.name === 'APPLE')) && (i.weight <= 100)) { 
-        console.log(i.name + " " + i.weight); 
-        break; 
-    } 
-}
+    function rules() {
 
-for (let i of fruits) { 
-    if ((i.name.toLowerCase() === 'apple') && (i.weight <= 100)) { 
-        console.log(i.name + " " + i.weight); 
-        break; 
-    } 
-}
+        console.log('Правила викторины: ' );
+
+        console.log('1. Внимательно читаете вопрос ' );
+
+        console.log('2. Варианты ответов ниже - выбираете один из вариантов ответа (не торопитесь, подумайте))' );
+
+        console.log('3. Введите номер ответа в выпадающее окошко и нажимите "OK"' );
+
+        console.log('4. Если хотите прекратить игру введите "q" в выпадающее окошко и нажимите "OK"' );
+
+        }
+    return {
+           run: run
+    }
+
+})();
+
+quiz.run();

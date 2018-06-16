@@ -24,11 +24,15 @@ const quiz = (function(){
     function run() {
         rules();
         counter = 0;
+        let q;
         for(let val of test) {
             alertText(val);
-            let q = prompt('Ваш вариант','');
+            q = prompt('Ваш вариант','');
+            //console.log(q);
             if(!getPrompt(q,val.rigthAnswer)) break;
         }
+       // console.log(q);
+       // if(q !== 'q' || counter !== test.length) run();
     }
     function alertText(o) {
         console.log(o.question);
@@ -55,6 +59,7 @@ const quiz = (function(){
                 console.log('Давайте попробуем ещё)) , Ваш текущий счёт 0 баллов ))' );
                 console.log('--------------------------------------');
                 return run();
+               
             }  
         }
     
