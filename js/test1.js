@@ -28,11 +28,10 @@ const quiz = (function(){
         for(let val of test) {
             alertText(val);
             q = prompt('Ваш вариант','');
-            //console.log(q);
+           
             if(!getPrompt(q,val.rigthAnswer)) break;
         }
-       // console.log(q);
-       // if(q !== 'q' || counter !== test.length) run();
+       
     }
     function alertText(o) {
         console.log(o.question);
