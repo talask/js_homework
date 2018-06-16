@@ -50,7 +50,7 @@ console.log (reverseString(''));
 function getCodeStringFromText (str) {
     if(!str) return 'Not found any arguments';
     if(typeof(str) !== 'string') return 'Argument is ' + typeof(str);
-    if (!str) return 'String is empty';
+    if (!str.length) return 'String is empty';
 
     let new_string = '',
         i = -1;
