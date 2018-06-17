@@ -5,7 +5,7 @@ function Car(name, age) {
     this.name = name || '',
     this.age = age || 0,
     this.getName = function() {
-        return this.name[0].toUpperCase() + this.name.slice(1, this.name.length).toLowerCase();
+        return this.name[0].toUpperCase() + this.name.slice(1).toLowerCase();
     }
     this.yearOfIssue = function() {
         let date = new Date();

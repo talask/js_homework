@@ -59,9 +59,9 @@ let users = [
 let prov =  (item, el, arr) => item.age <= 10;
  function some(arr, func) {
     for (let i=0; i < arr.length; i++) {
-        if (func(arr[i], i, arr)) return 'true';
+        if (func(arr[i], i, arr)) return true;
     }
-    return 'false';
+    return false;
  }
 
 
@@ -71,9 +71,9 @@ let prov =  (item, el, arr) => item.age <= 10;
 
  function every(arr, func) { 
     for (let i=0; i < arr.length; i++) {
-        if (!func(arr[i], i, arr)) return 'false';
+        if (!func(arr[i], i, arr)) return false;
     }
-    return 'true';
+    return true;
  }
 
  let resultEvery = every(users, (item, el, arr) => item.age >= 10);

@@ -131,3 +131,40 @@
 })();
 
 quiz.run();
+
+
+let stringBegin = 'abcdeuiooplkjhgfrewsartquyoi8909nm oiuoiu88j iuio789nm 8', stringEnd ='';
+
+console.log("resultCompare - общее время проверки");
+console.log("resultFor - общий результат проверки 100 повторений цикла for");
+console.log("resultMetods - общий результат проверки 100 повторений использования методов");
+console.log("result - время выполнения 1 итерации проверки цикла for");
+console.log("result1 - время выполнения 1 итерации проверки работы методов");
+console.time('resultCompare');
+console.time('resultFor');
+ for( let k=0; k<= 100; k++){
+    console.time('result');
+    stringEnd ='';
+    for (let i = stringBegin.length - 1; i >= 0; i--) { 
+        stringEnd += stringBegin[i];
+    }
+    console.timeEnd('result');
+ }
+ console.timeEnd('resultFor'); 
+ console.log(stringEnd);
+ console.time('resultMetods');
+ for( let k=0; k<= 100; k++) {
+    console.time('result1');
+    stringBegin = stringBegin.split('').reverse().join('');
+    console.timeEnd('result1');
+ }
+ console.timeEnd('resultMetods');
+ console.time('resultWhile');
+ for( let k=0; k<= 100; k++) {
+    console.time('result2');
+    i = stringBegin.length, stringEnd ='';
+    while(i) { stringEnd += stringBegin[--i]; }
+    console.timeEnd('result2');
+ }
+ console.timeEnd('resultWhile');
+ console.timeEnd('resultCompare'); 
