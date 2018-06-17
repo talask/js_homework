@@ -28,8 +28,15 @@ const quiz = (function(){
         for(let val of test) {
             alertText(val);
             q = prompt('Ваш вариант','');
+<<<<<<< HEAD
             if(!getPrompt(q,val.rigthAnswer)) break;
         }
+=======
+           
+            if(!getPrompt(q,val.rigthAnswer)) break;
+        }
+       
+>>>>>>> 83b114996d47484cea129292458d8ccc516a3cd2
     }
     function alertText(o) {
         console.log(o.question);
