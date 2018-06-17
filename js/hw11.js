@@ -21,12 +21,12 @@ console.log(auto.yearOfIssue());
 
 function Encrypt(str) {
     this.stringBegin = str,
-    this.stringEncrypt = function () {
-        let stringEnd = '';
+    this.stringEncrypt = '',
+    this.runStringEncrypt = function () {
         for (let i = this.stringBegin.length - 1; i >= 0; i--) { 
-            stringEnd += this.stringBegin[i];
+            this.stringEncrypt += this.stringBegin[i];
         }
-        return stringEnd;
+        return this.stringEncrypt;
     },
     
     this.allStringDel = function() {
@@ -40,5 +40,5 @@ function Encrypt(str) {
 
 const ex = new Encrypt('Строка');
 console.log(ex.getString());
-console.log(ex.stringEncrypt());
+console.log(ex.runStringEncrypt());
 console.log(ex.allStringDel());
