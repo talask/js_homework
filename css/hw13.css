@@ -53,3 +53,20 @@ button {
     background-color: #e5e5e5;
 	color: #777;
 }
+
+.users-list {
+	text-align: left;
+	padding: 10px 30px;
+	background-color: #ececec;
+	margin-top: 20px;
+	max-width: 50%;
+	/* width: auto;
+	height: auto; */
+}
+.users-list li {
+	text-transform: uppercase;
+}
+
+.users-list li + li {
+	margin-top: 10px;
+}

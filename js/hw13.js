@@ -66,3 +66,9 @@ button.addEventListener('click',function(e){
         });
         
 })
+
+const ulLI = document.querySelectorAll('user');
+//.forEach(btn => btn.addEventListener('click', startTimer));
+ulLI.forEach(item => item.addEventListener('click', function(){
+    console.log('111');
+}));
