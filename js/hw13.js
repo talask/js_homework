@@ -21,13 +21,13 @@ let url = "https://jsonplaceholder.typicode.com/users";
 // Create classes
 class UI { 
     addUsers(resp){
-        if(resp.lenght > 0) {
+        // if(resp.lenght > 0) {
         let li;
         resp.sort(function(prev, next) {
             if (prev.name < next.name) return -1;
             if (prev.name >= next.name) return 1;
         });
-        resp.forEach(element => { 
+        resp.forEach(function(element) { 
             li += '<li class="user" data-id="' + element.id + '">' + element.name + '</li>';
             console.log('<li class="user" data-id="' + element.id + '">' + element.name + '</li>');
         });
@@ -36,9 +36,10 @@ class UI {
         const ul = '<ul>' + li + '</ul>';
         const div = document.querySelector('.users-list');
         div.innerHTML= ul;
+        return;
     }
 }
-}
+// }
 const button = document.querySelector('button.get-users');
 
 button.addEventListener('click',function(e){
