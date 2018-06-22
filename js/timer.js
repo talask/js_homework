@@ -71,8 +71,8 @@ const timer = (function () {
 
 const buttons = document.querySelectorAll('[data-time]');
 // my change
-const input = document.querySelectorAll('input');
-const form = document.querySelectorAll('form');
+const input = document.querySelector('input');
+const form = document.querySelector('form');
 console.log(input);
 timer.init({
   timerDisplaySelector: '.display__time-left',
@@ -86,13 +86,13 @@ function startTimer(e) {
   timer.start(seconds);
 }
 
+
 buttons.forEach(btn => btn.addEventListener('click', startTimer));
-input[0].addEventListener("keyup", function() {
-    console.log(this.value);
-});
+
 // my change
-form[0].addEventListener('submit', function(){
-  console.log('111');
+form.addEventListener('submit', function(e){
+  const seconds = Number(this.getElementByName.value);
+  console.log(e.target.getElementByName.value);
 });
 
 
