@@ -34,16 +34,23 @@ const timer = (function () {
   }
 
   function displayTimeLeft(seconds) {
-    const minutes = Math.floor(seconds / 60);
+    let minutes = Math.floor(seconds / 60);
     const reminderSeconds = seconds % 60;
     // my change: add hour, day 
-    const hour = minutes % 60;
-    const days = hour % 24;
-
+    let hour = Math.floor(minutes / 60);
+    const days = Math.floor(hour / 24);
+  
+    if(hour) {
+      minutes %= 24*60;
+    }
+    if(days) {
+      hour %= 24*60;
+    }
+    console.log(days + ' ' + hour + ' ' + minutes + ' ' + reminderSeconds)
     // my change
-    const display = days ? `${days}:${hour < 10 ? '0' : ''}${hour}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
-                          : hour ? `${days}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
-                          : `${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+    const display = days ? `d${days}:${hour < 10 ? '0' : ''}${hour}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
+                          : hour ? `h${days}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
+                          : `m${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
     // const display = `${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
     timerDisplay.textContent = display;
     document.title = display;
@@ -91,13 +98,11 @@ function startTimer(e) {
 buttons.forEach(btn => btn.addEventListener('click', startTimer));
 
 // my change
-form.addEventListener('submit',function(e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-});
-input.addEventListener('keyup', function(e){
-  console.log(e);
- // const seconds = Number(.getElementByName('minutes').value);
- // timer.start(seconds);
+  if(input.value.length > 0) {
+    timer.start(input.value*60);
+  }
 });
 
 
