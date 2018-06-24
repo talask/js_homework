@@ -61,13 +61,16 @@ class createString {
     getStrLenght () {
         return this.str.length;
     }
-   
+    valueOf () { 
+        return this.str.length; 
+    }
+    toString() { 
+        return this.str; 
+    }
 }
 
+
 let someString = new createString('qwerty');
-console.log(someString);
-createString.prototype.toString = function() { return this.str; };
-createString.prototype.valueOf = function() { return this.str.length; };
 console.log(someString.getStrLenght());
 console.log(someString.toString());
-console.log(String(someString));
+console.log(+someString);
