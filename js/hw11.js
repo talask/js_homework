@@ -65,7 +65,7 @@ class createString {
         return this.getStrLenght(); 
     }
     toString() { 
-        return this. getStr(); 
+        return this.getStr(); 
     }
 }
 
