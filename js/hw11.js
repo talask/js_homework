@@ -62,10 +62,10 @@ class createString {
         return this.str.length;
     }
     valueOf () { 
-        return this.str.length; 
+        return this.getStrLenght(); 
     }
     toString() { 
-        return this.str; 
+        return this. getStr(); 
     }
 }
 
