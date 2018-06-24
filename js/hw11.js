@@ -20,20 +20,21 @@ console.log(auto.yearOfIssue());
 // 2
 
 function Encrypt(str) {
-    this.stringBegin = str,
-    this.stringEncrypt = '',
+     let stringBegin = str,
+         stringEncrypt = '';
     this.runStringEncrypt = function () {
-        for (let i = this.stringBegin.length - 1; i >= 0; i--) { 
-            this.stringEncrypt += this.stringBegin[i];
+
+        for (let i = stringBegin.length - 1; i >= 0; i--) { 
+            stringEncrypt += stringBegin[i];
         }
-        return this.stringEncrypt;
+        return stringEncrypt;
     },
     
     this.allStringDel = function() {
-        return this.stringBegin = '', this.stringEncrypt = '';
+        return stringBegin = '', stringEncrypt = '';
     }
     this.getString = function() {
-        return this.stringBegin;
+        return stringBegin;
     }
 
 }
@@ -42,3 +43,31 @@ const ex = new Encrypt('Строка');
 console.log(ex.getString());
 console.log(ex.runStringEncrypt());
 console.log(ex.allStringDel());
+console.log(ex.getString());
+
+// 3
+class createString {
+    constructor (string) {
+        this.str = string
+    }
+    
+    getStr() {
+        return this.str;
+    }
+
+    setStr(s) {
+        return this.str = s;
+    }
+    getStrLenght () {
+        return this.str.length;
+    }
+   
+}
+
+let someString = new createString('qwerty');
+console.log(someString);
+createString.prototype.toString = function() { return this.str; };
+createString.prototype.valueOf = function() { return this.str.length; };
+console.log(someString.getStrLenght());
+console.log(someString.toString());
+console.log(String(someString));

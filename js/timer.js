@@ -60,6 +60,7 @@ const timer = (function () {
   function stop() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
+    clearInterval(countdown);
   }
 
   return {

@@ -22,11 +22,9 @@ let url = "https://jsonplaceholder.typicode.com/users";
 class UI { 
     addUsers(resp){
         // if(resp.lenght > 0) {
-        let li;
-        resp.sort(function(prev, next) {
-            if (prev.name < next.name) return -1;
-            if (prev.name >= next.name) return 1;
-        });
+        let li='';
+
+        sortArray(resp);
         resp.forEach(function(element) { 
             li += '<li class="user" data-id="' + element.id + '">' + element.name + '</li>';
             console.log('<li class="user" data-id="' + element.id + '">' + element.name + '</li>');
@@ -39,7 +37,14 @@ class UI {
         return;
     }
 }
-// }
+function sortArray(arr) {
+    return arr.sort(function(prev, next) {
+        if (prev.name < next.name) return -1;
+        if (prev.name >= next.name) return 1;
+    });
+    
+}
+
 const button = document.querySelector('button.get-users');
 
 button.addEventListener('click',function(e){
@@ -67,8 +72,10 @@ button.addEventListener('click',function(e){
         
 })
 
-const ulLI = document.querySelectorAll('user');
-//.forEach(btn => btn.addEventListener('click', startTimer));
-ulLI.forEach(item => item.addEventListener('click', function(){
-    console.log('111');
-}));
+const div = document.querySelector('.users-list');
+console.log(div);
+div.addEventListener('click', function(e){
+    if(e.target.tagName === 'LI') {
+
+    }
+});
