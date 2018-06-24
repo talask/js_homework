@@ -91,9 +91,13 @@ function startTimer(e) {
 buttons.forEach(btn => btn.addEventListener('click', startTimer));
 
 // my change
-form.addEventListener('submit', function(e){
-  const seconds = Number(this.getElementByName.value);
-  console.log(e.target.getElementByName.value);
+form.addEventListener('submit',function(e) {
+  e.preventDefault();
+});
+input.addEventListener('keyup', function(e){
+  console.log(e);
+ // const seconds = Number(.getElementByName('minutes').value);
+ // timer.start(seconds);
 });
 
 
