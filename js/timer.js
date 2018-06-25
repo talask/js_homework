@@ -37,21 +37,16 @@ const timer = (function () {
     let minutes = Math.floor(seconds / 60);
     const reminderSeconds = seconds % 60;
     // my change: add hour, day 
-    let hour = Math.floor(minutes / 60);
-    const days = Math.floor(hour / 24);
-  
-    if(hour) {
-      minutes %= 24*60;
-    }
-    if(days) {
-      hour %= 24*60;
-    }
-    console.log(days + ' ' + hour + ' ' + minutes + ' ' + reminderSeconds)
+    const reminderMinutes = minutes % 60;
+    const hour = Math.floor(minutes / 60);
+    const reminderHour = hour > 0 ? hour % 24 : 0;
+    const reminderDays = hour > 24 ? Math.floor(hour / 24) :  0;
+    
     // my change
-    const display = days ? `d${days}:${hour < 10 ? '0' : ''}${hour}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
-                          : hour ? `h${days}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
-                          : `m${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
-    // const display = `${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+    const display = reminderDays ? `${reminderDays}:${reminderHour < 10 ? '0' : ''}${reminderHour}:${reminderMinutes < 10 ? '0' : ''}${reminderMinutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
+                          : reminderHour ? `${reminderHour}:${reminderMinutes < 10 ? '0' : ''}${reminderMinutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`
+                          : `${reminderMinutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+    
     timerDisplay.textContent = display;
     document.title = display;
   }
@@ -67,7 +62,7 @@ const timer = (function () {
   function stop() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
-    clearInterval(countdown);
+    clearInterval(0);
   }
 
   return {
