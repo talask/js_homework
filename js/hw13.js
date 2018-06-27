@@ -31,7 +31,7 @@ class UI {
         // Create table
         let table = `<p class="close-info"><i class="fas fa-times-circle"></i></p><table>
                     <tr><th>Name</th><td>${searchUser[0].name}</td></tr>
-                    <tr><th>UserName</th><td>${searchUser[0].username}'</td></tr>
+                    <tr><th>UserName</th><td>${searchUser[0].username}</td></tr>
                     <tr><th>Phone</th><td>${searchUser[0].phone}</td></tr>
                     <tr><th>Email</th><td>${searchUser[0].email}</td></tr>
                     <tr><th>Website</th><td>${searchUser[0].website}</td></tr>`;
