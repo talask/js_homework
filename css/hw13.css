@@ -28,7 +28,7 @@ ul, ol {
 	margin: 0;
 }
 
-button {
+.button {
     outline: none;
 	border: none;
 	cursor: pointer;
@@ -36,12 +36,37 @@ button {
 	padding: 0;
 }
 /* ===== Reset end ===== */
+/* ===== Style start ===== */
+.bg-white {
+	background-color: #FFF8DC;
+}
+.bg-gray {
+background-color: #ececec;
+}
+h1 {
+	color: #777;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+/* ===== Style end ===== */
 /* ===== Custom start ===== */
 .main {
     max-width: 1200;
 }
 
-button {
+p.info {
+	font-size: 14px;
+	color: #BDB76B;
+}
+
+i {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	font-size: 16px;
+}
+
+.button {
 	display: inline-block;
 	padding: 12px 20px;
 	border-radius: 2px;
@@ -54,19 +79,37 @@ button {
 	color: #777;
 }
 
+a.button:hover {
+	font-size: 15px;
+}
+
 .users-list {
 	text-align: left;
 	padding: 10px 30px;
-	background-color: #ececec;
 	margin-top: 20px;
-	max-width: 50%;
-	/* width: auto;
-	height: auto; */
+	max-width: 30%;
 }
 .users-list li {
 	text-transform: uppercase;
-}
-
-.users-list li + li {
+	padding: 5px;
 	margin-top: 10px;
 }
+
+.users-list li:hover {
+	background-color: #EEE8AA;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.user-info {
+	position: absolute;
+	left: 29%;
+	margin-top: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3); 
+	padding: 10px 20px 15px;
+}
+
+td, th {
+	padding: 5px; 
+}
+	

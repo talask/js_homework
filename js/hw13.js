@@ -1,81 +1,110 @@
-// Class Responce
-// class User {
-//     constructor(id, name, username, email, address, geo) {
-//         this.id = id,
-//         this.name = name,
-//         this.username = username,
-//         this.email = email,
-//         this.address = {
-//             street = address.street,
-//             suite = address.suite,
-//             city = address.city,
-//             zipcode = address.zipcode
-//         },
-//         this.geo = {
-//             lat = geo.lat,
-//             lng = geo.lng
-//         }
-//     }
-// }
+// Set value
 let url = "https://jsonplaceholder.typicode.com/users";
+const button = document.querySelector('a.get-users');
+const close = document.querySelector('p.close-info');
+const div = document.querySelector('.users-list');
+const p = document.querySelector('p.info');
+let usersList = [];
+
 // Create classes
 class UI { 
-    addUsers(resp){
-        // if(resp.lenght > 0) {
-        let li='';
 
-        sortArray(resp);
+    // Create and show users list
+    addUsers (resp){
+        let li='';
+        let bgcolor = ['bg-gray', 'bg-white'];
+        let toggle = 0;
         resp.forEach(function(element) { 
-            li += '<li class="user" data-id="' + element.id + '">' + element.name + '</li>';
-            console.log('<li class="user" data-id="' + element.id + '">' + element.name + '</li>');
-        });
-     
-            // Create markup
+            li += '<li class="user ' + bgcolor[toggle] + '" data-id="' + element.id + '">' + element.name + '</li>';
+            toggle = toggle ? 0 : 1;
+        }); 
+        // Create markup
         const ul = '<ul>' + li + '</ul>';
-        const div = document.querySelector('.users-list');
-        div.innerHTML= ul;
-        return;
+        this.innerText(ul, div)
+    }
+
+    // Show information about user
+    viewUser (id, setElement) {
+        let searchUser = usersList.filter(function(el){
+            return el.id == id; 
+        });
+        // Create table
+        let table = `<p class="close-info"><i class="fas fa-times-circle"></i></p><table>
+                    <tr><th>Name</th><td>${searchUser[0].name}</td></tr>
+                    <tr><th>UserName</th><td>${searchUser[0].username}'</td></tr>
+                    <tr><th>Phone</th><td>${searchUser[0].phone}</td></tr>
+                    <tr><th>Email</th><td>${searchUser[0].email}</td></tr>
+                    <tr><th>Website</th><td>${searchUser[0].website}</td></tr>`;
+       
+        let info = document.querySelectorAll('.user-info');
+        if(info.length > 0) {
+            for( let el of info){
+                this.deleteEl(el);
+            } 
+        }
+        // Create element
+        let divInfo = document.createElement('div');
+            this.innerText(table,divInfo);
+            divInfo.classList.add('user-info');
+        // Insert div information
+        setElement.insertAdjacentElement("beforebegin", divInfo);
+    }
+
+    // Insert text to element html
+    innerText (text, el) {
+        el.innerHTML = text;
+    }
+
+    // Delete element html
+    deleteEl (el) {
+        el.remove();
     }
 }
-function sortArray(arr) {
-    return arr.sort(function(prev, next) {
-        if (prev.name < next.name) return -1;
-        if (prev.name >= next.name) return 1;
-    });
-    
-}
 
-const button = document.querySelector('button.get-users');
+class TransformObj { 
+
+    sortArray(arr) {
+        return arr.sort(function(prev, next) {
+            if (prev.name < next.name) return -1;
+            if (prev.name >= next.name) return 1;
+        });
+    }
+
+    createList(arr) {
+        return usersList = arr;
+    }
+
+}
 
 button.addEventListener('click',function(e){
     // Create ui
     const ui = new UI();
-   
-        // Создать экземпляр класса XMLHttpRequest
-        let xhr = new XMLHttpRequest();
-    
-        // вызвать метод open
-        xhr.open("GET", url);
-        // Отправляем запрос
-        xhr.send();
-        // Подписываемся на событие load
-        xhr.addEventListener("load", function () {
-            if (xhr.status === 200) {
-                let response = JSON.parse(xhr.responseText);
-                // console.log(response);
-                ui.addUsers(response);
-                
-            } else {
-                console.log(xhr.status);
-            }
-        });
-        
+    const transform = new TransformObj();
+    const http = new Http();
+
+    http.get(url, function (err, res) {
+        if(err) {
+            alert ('ERROR')
+        } else {
+            let answer = transform.sortArray(JSON.parse(res));
+            transform.createList(answer);
+            ui.addUsers(answer);
+            ui.innerText('Successful work!', p);
+        }
+    });        
 })
 
-const div = document.querySelector('.users-list');
-console.log(div);
 div.addEventListener('click', function(e){
-    if(e.target.tagName === 'LI') {
+    const ui = new UI();
 
+    if(e.target.tagName === 'LI') {
+        ui.viewUser(e.target.dataset.id, e.target); 
+    }
+
+    if(e.target.tagName === 'I') {
+       ui.deleteEl(e.target.closest('div'));
     }
 });
+
+
+
