@@ -42,12 +42,30 @@ class UI {
                 this.deleteEl(el);
             } 
         }
+
+        let active = document.querySelectorAll('li.active');
+        if(active.length > 0) {
+            for( let el of active){
+                this.deleteClass(el, 'active');
+            } 
+        }
+
         // Create element
         let divInfo = document.createElement('div');
             this.innerText(table,divInfo);
             divInfo.classList.add('user-info');
         // Insert div information
         setElement.insertAdjacentElement("beforebegin", divInfo);
+    }
+
+    // Add class
+    addClass (el, className) {
+        el.classList.add(className);
+    }
+
+    // Delete class
+    deleteClass (el, className) {
+        el.classList.remove(className);
     }
 
     // Insert text to element html
@@ -99,9 +117,11 @@ div.addEventListener('click', function(e){
 
     if(e.target.tagName === 'LI') {
         ui.viewUser(e.target.dataset.id, e.target); 
+        ui.addClass(e.target, 'active');
     }
 
     if(e.target.tagName === 'I') {
+       ui.deleteClass(e.target.closest('div').nextElementSibling, 'active');
        ui.deleteEl(e.target.closest('div'));
     }
 });

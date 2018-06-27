@@ -96,6 +96,12 @@ a.button:hover {
 }
 
 .users-list li:hover {
+	background-color: #FAFAD2;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.users-list li.active {
 	background-color: #EEE8AA;
 	font-size: 16px;
 	font-style: italic;
