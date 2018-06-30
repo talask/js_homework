@@ -10,6 +10,7 @@ const timer = (function () {
     timerDisplay = document.querySelector(settings.timerDisplaySelector);
     endTime = document.querySelector(settings.endTimeSelector);
     alarmSound = new Audio(settings.alarmSound);
+    return this;
   }
 
   function start(seconds) {
@@ -32,6 +33,8 @@ const timer = (function () {
 
       displayTimeLeft(secondsLeft);
     }, 1000);
+   
+    return this;
   }
 
   function displayTimeLeft(seconds) {
