@@ -29,7 +29,7 @@ console.log(price.getPriceWithDiscount());
 // 3
 
 const user = { name: 'Abraham' };
-getUserName = function(){ return this.name; }
+const getUserName = function(){ return this.name; }
 user.getName = getUserName;
 console.log(user.getName());
 
@@ -38,7 +38,7 @@ console.log(user.getName());
 const someObj = {
     height: 10,
     augment: function() {
-        return this.height = ++this.height;
+        return  ++this.height;
     }
 };
 console.log('Height before use someObj.augment(); - ' + someObj.height);
@@ -50,7 +50,7 @@ console.log('Height after someObj.augment(); - ' + someObj.height);
 const numerator = {
     value: 1,
     double: function(){
-        this['value'] = this.value*2; 
+        this['value'] *= 2; 
         return this;
     },
     plusOne: function(){ 
@@ -106,13 +106,14 @@ const detal = {
     count: 320,
     price: 29
 };
-detal.getAllCost = product.getAllCost;
-console.log('detal.getAllCost() => ' + detal.getAllCost());
+// detal.getAllCost = product.getAllCost;
+product.getAllCost.call(detal);
+console.log('product.getAllCost.call(detal) => ' + product.getAllCost.call(detal));
 
 // 4
 
 let sizes = { width: 5, height: 10 };
-getSquare = function() { return this.width * this.height; }
+const getSquare = function() { return this.width * this.height; }
 console.log(getSquare.call(sizes));
 
 // 5
