@@ -13,13 +13,14 @@ const timer = (function () {
   }
 
   function start(seconds) {
+    if(countdown) clearInterval(countdown);
     if(typeof seconds !== "number") return new Error('Please provide seconds!');
 
     const now = Date.now();
     const then = now + seconds * 1000;
 
     displayTimeLeft(seconds);
-    displayEndTime(then);
+    displayEndTime(then, seconds);
 
     countdown = setInterval(() => {
       const secondsLeft = Math.round( (then - Date.now()) / 1000 );
@@ -51,18 +52,27 @@ const timer = (function () {
     document.title = display;
   }
 
-  function displayEndTime(timestamp) {
+  function displayEndTime(timestamp, sec) {
     const end = new Date(timestamp);
     const hour = end.getHours();
     const minutes = end.getMinutes();
+    // my change
+    const difference = Math.floor(sec/3600 * 24);
+    const day = end.getDate();
+    const month = end.getMonth() + 1;
+    const year = end.getFullYear();
 
-    endTime.textContent = `Be back at ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+    endTime.textContent = difference ?  `Be back at ${day< 10 ? '0' : ''}${day}.${month< 10 ? '0' : ''}${month}.${year} ${hour}:${minutes < 10 ? '0' : ''}${minutes}`
+                          : `Be back at ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
   }
 
   function stop() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
-    clearInterval(0);
+    clearInterval(countdown);
+    timerDisplay.textContent = '';
+    endTime.textContent = '';
+    document.title = 'Countdown Timer';
   }
 
   return {
@@ -74,6 +84,7 @@ const timer = (function () {
 
 const buttons = document.querySelectorAll('[data-time]');
 // my change
+const stopTime = document.querySelector('.stop');
 const input = document.querySelector('input');
 const form = document.querySelector('form');
 console.log(input);
@@ -99,6 +110,11 @@ form.addEventListener('submit', function(e) {
     timer.start(input.value*60);
   }
 });
+
+stopTime.addEventListener('click', function(e) {
+  timer.stop();
+});
+
 
 
 // const timerBlock = document.querySelector('.timer');

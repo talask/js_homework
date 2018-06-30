@@ -80,3 +80,11 @@ body {
   font-size: 4rem;
   color:white;
 }
+
+.stop {
+  background-color: #fff;
+  color: #333;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 3px;
+}
