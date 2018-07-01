@@ -79,5 +79,11 @@ class UI {
     
         this.container.insertAdjacentHTML("beforeend", template);
       }
-      
+    addOptins (item, sel){
+          //<option value="abc-news">Abc News</option>
+        const option = `<option value="${item.id}">${item.name}</option>`;
+
+        sel.insertAdjacentHTML("beforeend", option);
+        
+      }
 };
