@@ -70,7 +70,7 @@ class Http {
   }
 }
 
-const http = new Http();
+//const http = new Http();
 
 // делаем get запрос
 // http.get("https://jsonplaceholder.typicode.com/users", function (err, res) {
@@ -84,9 +84,9 @@ const http = new Http();
 // });
 
 
-http.get("https://newsapi.org/v2/top-headlines?country=ua&category=technology&apiKey=9c27b0f722b84da5a08312d2b125351b", function (err, res) {
-  console.log(JSON.parse(res));
-});
+// http.get("https://newsapi.org/v2/top-headlines?country=ua&category=technology&apiKey=9c27b0f722b84da5a08312d2b125351b", function (err, res) {
+//   console.log(JSON.parse(res));
+// });
 
 
 
