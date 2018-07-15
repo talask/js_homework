@@ -34,7 +34,7 @@ sources.addEventListener('change', onChangeSource);
 
             // Create list sources
             let i=0;
-            response.sources.forEach(function(el) {
+            data.sources.forEach(function(el) {
                 if(alphabet[i] == el.id[0]) {
                     i++;
                 ui.addOptins(el, source);
@@ -44,7 +44,7 @@ sources.addEventListener('change', onChangeSource);
         })
         .catch(err => {
             ui.showError(err);
-        }); 
+        }) 
 })();
 
 // Events handler
@@ -62,25 +62,12 @@ function onChangeCountry (e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            response.articles.forEach(news => ui.addNews(news));
+            data.articles.forEach(news => ui.addNews(news));
         })
         .catch(err => {
             // Show error
             ui.showError(err);
-        });
-        // if(!err) {
-        //     // JSON => obj
-        //     const response = JSON.parse(res);
-        //     // Delete content
-        //     ui.clearContainer();
-        //     // scan obj
-        //     response.articles.forEach(news => ui.addNews(news));
-        // }  else {
-        //     // Show error
-        //     ui.showError(err);
-        // }
-
-    // });
+        })
 }   
 
 
@@ -92,27 +79,14 @@ function onSearch(e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            response.articles.forEach(news => ui.addNews(news));
+            data.articles.forEach(news => ui.addNews(news));
             } else {
             ui.showInfo("По вашему запросу новостей не найдено!");
             }
         })
         .catch(err => {
             ui.showError(err);
-        });
-    //   if (err) return ui.showError(err);
-
-    //   const response = JSON.parse(res);
-
-    //   if (response.totalResults) {
-    //    // Delete content
-    //     ui.clearContainer();
-    //     // scan obj
-    //     response.articles.forEach(news => ui.addNews(news));
-    //   } else {
-    //     ui.showInfo("По вашему запросу новостей не найдено!");
-    //   }
-    // });
+        })
 }
 
 function onChangeCategory (e) {
@@ -129,7 +103,7 @@ function onChangeCategory (e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                response.articles.forEach(news => ui.addNews(news));
+                data.articles.forEach(news => ui.addNews(news));
             } else {
                 // "Новости по категории такой то по стране такойто не найдены"
                 let message = select.value.length ? `Новости по категории ${category.text} по стране ${select.text}  не найдены`
@@ -140,28 +114,7 @@ function onChangeCategory (e) {
         .catch(err => {
             //Show error
             ui.showError(err);
-        });
-
-    //     if(!err) {
-    //         // JSON => obj
-    //         const response = JSON.parse(res);
-    //         if (response.totalResults) {
-    //             // Delete content
-    //             ui.clearContainer();
-    //             // scan obj
-    //             response.articles.forEach(news => ui.addNews(news));
-    //         } else {
-    //             // "Новости по категории такой то по стране такойто не найдены"
-    //             let message = select.value.length ? `Новости по категории ${category.text} по стране ${select.text}  не найдены`
-    //                           : `Новости по категории ${category.text}  не найдены`;
-    //             ui.showInfo(message);
-    //         }
-    //     }  else {
-    //         // Show error
-    //         ui.showError(err);
-    //     }
-
-    // });
+        })
 }   
 
 function onChangeSource(e) {
@@ -172,25 +125,12 @@ function onChangeSource(e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                response.articles.forEach(news => ui.addNews(news));
+                data.articles.forEach(news => ui.addNews(news));
             } else {
                 ui.showInfo("По вашему запросу новостей не найдено!");
             } 
         })
         .catch(err => {
             ui.showError(err);
-        });
-    //   if (err) return ui.showError(err);
-
-    //   const response = JSON.parse(res);
-
-    //   if (response.totalResults) {
-    //    // Delete content
-    //     ui.clearContainer();
-    //     // scan obj
-    //     response.articles.forEach(news => ui.addNews(news));
-    //   } else {
-    //     ui.showInfo("По вашему запросу новостей не найдено!");
-    //   }
-    // });
+        })
 }
