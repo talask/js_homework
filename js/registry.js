@@ -1,22 +1,19 @@
 // Init Auth
 const auth = new Auth;
+// Init UI
+const ui = new UI();
 
 //Init Form
 const formRegistry = document.forms['registry-form'];
 const email = formRegistry.elements['email'];
 const password = formRegistry.elements['password'];
 
-// //Check auth state
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//       // User is signed in.
-//       console.log(user);
-//       window.location = 'news-app.html';
-//     } 
-//   });
-
   formRegistry.addEventListener('submit', onRegistry);
- 
+  formRegistry.addEventListener('click', function(e){
+    if(e.target.tagName === 'I') {
+        ui.checkMessedge();
+    }
+  });
 
   function onRegistry(e) {
       e.preventDefault();
@@ -27,6 +24,8 @@ const password = formRegistry.elements['password'];
         })
         .catch(err => {
           console.log(err);
+          // Show error
+          ui.showErrorMessage(formRegistry, err);
         });
       }
   }

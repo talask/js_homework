@@ -2,6 +2,7 @@ class UI {
 
     constructor() {
         this.container = document.querySelector(".news-container .container .row");
+        
       }
 
     addNews(news) {
@@ -51,6 +52,12 @@ class UI {
         this.container.insertAdjacentHTML("beforeend", template);
       }
 
+      checkMessedge () {
+        if(document.querySelector('.message')) {
+          document.querySelector('.message').remove();
+        }
+      }
+
       showInfo(msg) {
         this.clearContainer();
     
@@ -79,11 +86,27 @@ class UI {
     
         this.container.insertAdjacentHTML("beforeend", template);
       }
+
     addOptins (item, sel){
-          //<option value="abc-news">Abc News</option>
         const option = `<option value="${item.id}">${item.name}</option>`;
 
         sel.insertAdjacentHTML("beforeend", option);
         
+      }
+
+      showErrorMessage(obj, err) {
+       
+        this.checkMessedge();
+    
+        const template = `
+          <div class="card red lighten-1 message">
+            <div class="card-content">
+            <p class="close-info"><i class="fas fa-times-circle"></i></p>
+                <span class="card-title">Error:</span>
+                <p>${err}</p>
+            </div>
+          </div>
+        `;
+        obj.insertAdjacentHTML("afterbegin", template);
       }
 };
