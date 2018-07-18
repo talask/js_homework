@@ -20,6 +20,7 @@ class UI {
                       <span class="card-title grey-text text-darken-4">${news.title}<i class="material-icons right">close</i></span>
                       <p>${news.description}</p>
                   </div>
+                  <button class="waves-effect waves-light btn add-favorite">Add favorite</button>
               </div>
           </div>
         `;

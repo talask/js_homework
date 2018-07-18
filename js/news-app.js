@@ -1,4 +1,3 @@
-
 // Init http
 const http = new Http();
 // Init UI
@@ -7,6 +6,10 @@ const ui = new UI();
 const apiKey = '9c27b0f722b84da5a08312d2b125351b';
 // Init Auth
 const auth = new Auth();
+// Init Favorite News
+const news = new FavoriteNews();
+// Init News store
+const NewsStore =  NewsStore.getInstance();
 
 // Create select sources
 
@@ -18,6 +21,7 @@ const searchBtn = document.getElementById('searchBtn');
 const category = document.getElementById('category');
 const source = document.getElementById('sources');
 const logout = document.querySelector('.logout');
+const newsContainer = document.querySelector('.news-container');
 
 
 // All events
@@ -26,6 +30,7 @@ searchBtn.addEventListener("click", onSearch);
 category.addEventListener('change', onChangeCategory);
 sources.addEventListener('change', onChangeSource);
 logout.addEventListener('click', onLogout);
+newsContainer.addEventListener('click', addFavorite);
 
 // Check user
 firebase.auth().onAuthStateChanged(function(user) {
@@ -75,6 +80,8 @@ function onChangeCountry (e) {
             ui.clearContainer();
             // scan obj
             data.articles.forEach(news => ui.addNews(news));
+            // save array news to news store
+            NewsStore.setNews(data);
         })
         .catch(err => {
             // Show error
@@ -151,4 +158,10 @@ function onLogout(){
     auth.logout()
         .then(() => window.location = 'login-start.html' )
         .catch(err => console.log(err));
+}
+
+function addFavorite(e) {
+    if(e.target.classlist.contains('add-favorite')) {
+        console.log(NewsStore.getNews());
+    }
 }
