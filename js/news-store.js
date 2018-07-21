@@ -1,17 +1,17 @@
 const NewsStore = (function (){
-    let news;
+    let news, instance;
 
-    function getNews(){
-        return news.slice;
+    function getNews() {
+        return news.slice();
     }
 
-    function setNews (newsArray) {
+    function setNews(newsArray) {
         news = newsArray;
-        return news.slice;
+        return news.slice();
 
     }
 
-    function createInstance () {
+    function createInstance() {
         return {
             getNews,
             setNews

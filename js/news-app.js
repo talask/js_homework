@@ -9,7 +9,7 @@ const auth = new Auth();
 // Init Favorite News
 const news = new FavoriteNews();
 // Init News store
-const NewsStore =  NewsStore.getInstance();
+const newsStore =  NewsStore.getInstance();
 
 // Create select sources
 
@@ -79,9 +79,9 @@ function onChangeCountry (e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            data.articles.forEach(news => ui.addNews(news));
+            data.articles.forEach((news, index) => ui.addNews(news, index));
             // save array news to news store
-            NewsStore.setNews(data);
+            newsStore.setNews(data.articles);
         })
         .catch(err => {
             // Show error
@@ -144,7 +144,7 @@ function onChangeSource(e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                data.articles.forEach(news => ui.addNews(news));
+                data.articles.forEach(news => ui.addNews(news, index));
             } else {
                 ui.showInfo("По вашему запросу новостей не найдено!");
             } 
@@ -161,7 +161,19 @@ function onLogout(){
 }
 
 function addFavorite(e) {
-    if(e.target.classlist.contains('add-favorite')) {
-        console.log(NewsStore.getNews());
+    if(e.target.classList.contains('add-favorite')) {
+        const index = e.target.dataset.index;
+        const oneNews = newsStore.getNews()[index];
+        console.log(oneNews);
+        news.addFavoriteNews(oneNews)
+            .then(data => {
+                //message
+                console.log(data);
+            })
+            .catch(err => {
+                 //message
+                console.log(err);
+            });
+
     }
 }

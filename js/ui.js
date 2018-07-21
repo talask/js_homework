@@ -5,7 +5,7 @@ class UI {
         
       }
 
-    addNews(news) {
+    addNews(news, index) {
         const template = `
             <div class="col s12 m6">
                 <div class="card left-align">
@@ -20,7 +20,7 @@ class UI {
                       <span class="card-title grey-text text-darken-4">${news.title}<i class="material-icons right">close</i></span>
                       <p>${news.description}</p>
                   </div>
-                  <button class="waves-effect waves-light btn add-favorite">Add favorite</button>
+                  <button class="waves-effect waves-light btn add-favorite" data-index="${index}">Add favorite</button>
               </div>
           </div>
         `;
