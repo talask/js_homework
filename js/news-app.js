@@ -20,8 +20,8 @@ const searchInput = document.getElementById('search');
 const searchBtn = document.getElementById('searchBtn');
 const category = document.getElementById('category');
 const source = document.getElementById('sources');
-const logout = document.querySelector('.logout');
-const newsContainer = document.querySelector('.news-container');
+// const logout = document.querySelector('.logout');
+// const newsContainer = document.querySelector('.news-container');
 
 
 // All events
@@ -29,8 +29,8 @@ select.addEventListener('change', onChangeCountry);
 searchBtn.addEventListener("click", onSearch);
 category.addEventListener('change', onChangeCategory);
 sources.addEventListener('change', onChangeSource);
-logout.addEventListener('click', onLogout);
-newsContainer.addEventListener('click', addFavorite);
+// logout.addEventListener('click', onLogout);
+// newsContainer.addEventListener('click', addFavorite);
 
 // Check user
 firebase.auth().onAuthStateChanged(function(user) {
@@ -154,26 +154,25 @@ function onChangeSource(e) {
         })
 }
 
-function onLogout(){
-    auth.logout()
-        .then(() => window.location = 'login-start.html' )
-        .catch(err => console.log(err));
-}
+// function onLogout(){
+//     auth.logout()
+//         .then(() => window.location = 'login-start.html' )
+//         .catch(err => console.log(err));
+// }
 
-function addFavorite(e) {
-    if(e.target.classList.contains('add-favorite')) {
-        const index = e.target.dataset.index;
-        const oneNews = newsStore.getNews()[index];
-        console.log(oneNews);
-        news.addFavoriteNews(oneNews)
-            .then(data => {
-                //message
-                console.log(data);
-            })
-            .catch(err => {
-                 //message
-                console.log(err);
-            });
+// function addFavorite(e) {
+//     if(e.target.classList.contains('add-favorite')) {
+//         const index = e.target.dataset.index;
+//         const oneNews = newsStore.getNews()[index];
+//         news.addFavoriteNews(oneNews)
+//              .then(data => {
+//                 //message
+//                 M.toast({html: 'News successfully added', classes: 'rounded'})
+//              })
+//              .catch(err => {
+//                  //message
+//                 console.log(err);
+//              });
 
-    }
-}
+//     }
+// }

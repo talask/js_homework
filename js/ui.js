@@ -27,6 +27,29 @@ class UI {
      this.container.insertAdjacentHTML("beforeend", template);
   }
 
+  addFavoriteNews(news, id) {
+  
+    const template = `
+        <div class="col s12 m6">
+            <div class="card left-align">
+                <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="${news.urlToImage}">
+                </div>
+              <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">${news.title}<i class="material-icons right">more_vert</i></span>
+                  <p><a href="${news.url}">Read more</a></p>
+             </div>
+             <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">${news.title}<i class="material-icons right">close</i></span>
+                  <p>${news.description}</p>
+              </div>
+              <button class="waves-effect waves-light red darken-1 btn remove-favorite" data-id="${id}">Remove favorite</button>
+          </div>
+      </div>
+    `;
+ this.container.insertAdjacentHTML("beforeend", template);
+}
+
     clearContainer() {
         this.container.innerHTML = "";
     }

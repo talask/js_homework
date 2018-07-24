@@ -9,16 +9,24 @@ const news = new FavoriteNews();
 // Init News store
 const newsStore =  NewsStore.getInstance();
 
+// Init elements
+
+
+
 window.addEventListener('load', onLoad);
 
 function onLoad() {
     // get favorite news
     news.getFavoriteNews()
         .then(favoriteNews => {
-           // ui 
-           favoriteNews.forEach((doc) => {
-           ui.addNews(doc.data);
-        }); 
+            // ui 
+            if(favoriteNews.docs.length) {
+                favoriteNews.forEach((doc) => {
+                ui.addFavoriteNews(doc.data(), doc.id);
+                }); 
+            } else {
+                ui.showInfo("No news added");
+            }
         })
         .catch(err => {
             console.log(err);

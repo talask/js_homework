@@ -4,3 +4,7 @@ i {
 	top: 5px;
 	font-size: 16px;
 }
+
+.nav-wrapper button.logout {
+	margin-left: 10px;
+}
