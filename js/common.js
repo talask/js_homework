@@ -1,4 +1,5 @@
 // common function
+
 const newsContainer = document.querySelector('.news-container');
 const logout = document.querySelector('.logout');
 
@@ -19,7 +20,7 @@ function actionsFavorite(e) {
              .then(data => {
                 //message
                 M.toast({html: 'News successfully added', classes: 'rounded'});
-                onLoad();
+                news.onLoad;
              })
              .catch(err => {
                  //message
@@ -34,7 +35,9 @@ function actionsFavorite(e) {
         news.removeFavoriteNews(id)
             .then(function() {
                 //message
+                console.log( 'News successfully deleted');
                 M.toast({html: 'News successfully deleted', classes: 'rounded'})
+                news.onLoad;
             })
              .catch(err => {
                  //message

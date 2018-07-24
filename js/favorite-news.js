@@ -16,6 +16,7 @@ const newsStore =  NewsStore.getInstance();
 window.addEventListener('load', onLoad);
 
 function onLoad() {
+    console.log('111')
     // get favorite news
     news.getFavoriteNews()
         .then(favoriteNews => {
