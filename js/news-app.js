@@ -20,8 +20,7 @@ const searchInput = document.getElementById('search');
 const searchBtn = document.getElementById('searchBtn');
 const category = document.getElementById('category');
 const source = document.getElementById('sources');
-// const logout = document.querySelector('.logout');
-// const newsContainer = document.querySelector('.news-container');
+
 
 
 // All events
@@ -29,8 +28,6 @@ select.addEventListener('change', onChangeCountry);
 searchBtn.addEventListener("click", onSearch);
 category.addEventListener('change', onChangeCategory);
 sources.addEventListener('change', onChangeSource);
-// logout.addEventListener('click', onLogout);
-// newsContainer.addEventListener('click', addFavorite);
 
 // Check user
 firebase.auth().onAuthStateChanged(function(user) {
@@ -46,8 +43,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     // Делаем запрос на получение новостей по тому что введено в инпут
     http.get(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
         .then(data => {
-
-            console.log("!!!" + data);
 
             // Create list sources
             let i=0;
@@ -98,7 +93,9 @@ function onSearch(e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            data.articles.forEach(news => ui.addNews(news));
+            data.articles.forEach((news, index) => ui.addNews(news, index));
+             // save array news to news store
+             newsStore.setNews(data.articles);
             } else {
             ui.showInfo("По вашему запросу новостей не найдено!");
             }
@@ -122,7 +119,9 @@ function onChangeCategory (e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                data.articles.forEach(news => ui.addNews(news));
+                data.articles.forEach((news, index) => ui.addNews(news, index));
+                // save array news to news store
+                 newsStore.setNews(data.articles);
             } else {
                 // "Новости по категории такой то по стране такойто не найдены"
                 let message = select.value.length ? `Новости по категории ${category.text} по стране ${select.text}  не найдены`
@@ -144,7 +143,9 @@ function onChangeSource(e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                data.articles.forEach(news => ui.addNews(news, index));
+                data.articles.forEach((news, index) => ui.addNews(news, index));
+                // save array news to news store
+                newsStore.setNews(data.articles);
             } else {
                 ui.showInfo("По вашему запросу новостей не найдено!");
             } 
@@ -153,26 +154,3 @@ function onChangeSource(e) {
             ui.showError(err);
         })
 }
-
-// function onLogout(){
-//     auth.logout()
-//         .then(() => window.location = 'login-start.html' )
-//         .catch(err => console.log(err));
-// }
-
-// function addFavorite(e) {
-//     if(e.target.classList.contains('add-favorite')) {
-//         const index = e.target.dataset.index;
-//         const oneNews = newsStore.getNews()[index];
-//         news.addFavoriteNews(oneNews)
-//              .then(data => {
-//                 //message
-//                 M.toast({html: 'News successfully added', classes: 'rounded'})
-//              })
-//              .catch(err => {
-//                  //message
-//                 console.log(err);
-//              });
-
-//     }
-// }

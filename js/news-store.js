@@ -2,6 +2,7 @@ const NewsStore = (function (){
     let news, instance;
 
     function getNews() {
+        console.log(news);
         return news.slice();
     }
 

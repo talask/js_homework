@@ -8,3 +8,9 @@ i {
 .nav-wrapper button.logout {
 	margin-left: 10px;
 }
+
+h2{
+	text-align: center;
+	text-transform: uppercase;
+	color: #666;
+}

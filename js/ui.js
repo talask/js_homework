@@ -28,8 +28,8 @@ class UI {
   }
 
   addFavoriteNews(news, id) {
-  
-    const template = `
+      
+      const template = `
         <div class="col s12 m6">
             <div class="card left-align">
                 <div class="card-image waves-effect waves-block waves-light">

@@ -16,11 +16,12 @@ function actionsFavorite(e) {
     if(e.target.classList.contains('add-favorite')) {
         const index = e.target.dataset.index;
         const oneNews = newsStore.getNews()[index];
+        console.log(index);
+        console.log(oneNews);
         news.addFavoriteNews(oneNews)
              .then(data => {
                 //message
                 M.toast({html: 'News successfully added', classes: 'rounded'});
-                news.onLoad;
              })
              .catch(err => {
                  //message
@@ -30,14 +31,14 @@ function actionsFavorite(e) {
     }
 
     if(e.target.classList.contains('remove-favorite')) {
-        //console.log('111');
         const id = e.target.dataset.id;
         news.removeFavoriteNews(id)
             .then(function() {
                 //message
                 console.log( 'News successfully deleted');
-                M.toast({html: 'News successfully deleted', classes: 'rounded'})
-                news.onLoad;
+                M.toast({html: 'News successfully deleted', classes: 'rounded'});
+                ui.clearContainer();
+                onLoad();
             })
              .catch(err => {
                  //message
