@@ -13,14 +13,22 @@
     }
 
     init() {
-      // показываем overlay
-      this.showOverlay();
-      // показываем модальное окно
-      this.showModal();
-      // Установить события
-      this.setEvents();
-      // Авто закрытие  модального окна
-      setTimeout(this.closeModal.bind(this), 10000);
+      
+      // // показываем overlay
+      // this.showOverlay();
+      // // показываем модальное окно
+      // this.showModal();
+      // // Установить события
+      // this.setEvents();
+      // // Авто закрытие  модального окна
+      // setTimeout(this.closeModal.bind(this), 10000);
+
+      // 
+      $.when(this.showOverlay(), this.showModal(), this.setEvents())
+        .done(setTimeout(this.closeModal.bind(this), 10000))
+        .fail(function(err) {
+          console.log('Error: ' + err);
+        });
 
     }
 
