@@ -6,8 +6,9 @@ class UI {
       }
 
     addNews(news, index) {
+       
         const template = `
-            <div class="col s12 m6">
+            <div class="col s12 m6" id="d${index}">
                 <div class="card left-align">
                     <div class="card-image waves-effect waves-block waves-light">
                          <img class="activator" src="${news.urlToImage}">
@@ -21,11 +22,18 @@ class UI {
                       <p>${news.description}</p>
                   </div>
                   <button class="waves-effect waves-light btn add-favorite" data-index="${index}">Add favorite</button>
-              </div>
-          </div>
+                </div>
+            </div>   
         `;
-     this.container.insertAdjacentHTML("beforeend", template);
+        
+        this.container.insertAdjacentHTML("beforeend", template);
+        let nam = 'd' + index;
+        const card = document.getElementById(nam);
+        card.style.opacity = 0;
+       
+        return card;
   }
+  
 
   addFavoriteNews(news, id) {
       
@@ -133,4 +141,69 @@ class UI {
         `;
         obj.insertAdjacentHTML("afterbegin", template);
       }
-};
+
+      showNews(arr) {
+        
+        let timeout = 0;
+        arr.forEach((el, index) => {
+            const newNews = this.addNews(el, index);
+          
+            setTimeout (() => {
+                this.animateElement(newNews);
+            }, timeout);
+            timeout += 500;
+        });
+     }
+
+      animateElement(element) {
+        let step = 0;
+       
+        function animateAction (time) {
+            step += 0.02;
+            element.style.opacity = step;
+            element.style.transform = `translateY(-${step + 10}px)`;
+           
+            const raf = requestAnimationFrame(animateAction);
+       
+            if(parseFloat(element.style.opacity) >=  1) {
+                    cancelAnimationFrame(raf)
+                }
+        }
+
+        animateAction(); 
+    }
+
+    createAlert(msg) {
+      const allAlerts = document.body.querySelectorAll(".alert");
+      let fullAlertsHeight = 20;
+      console.log(allAlerts.length);
+      if(allAlerts.length) {
+          allAlerts.forEach(el => {
+              fullAlertsHeight += el.offsetHeight + 10;
+          
+
+          });
+      }
+      const alert = document.createElement('div');
+      alert.classList.add('alert', `${msg.error ? "alert-danger" : "alert-success"}`);
+      let fullAllertsHeight = 50;
+      if (allAlerts.length) {
+        allAlerts.forEach(al => fullAllertsHeight += al.offsetHeight + 30);
+      }
+      alert.textContent = msg.html;
+      alert.style.opacity = 0;
+      alert.style.position = "fixed";
+      alert.style.top = `${fullAlertsHeight}px`;
+      alert.style.lineHeight = " 1.5em";
+      alert.style.right = "10px";
+      alert.style.zIndex = "9";
+      alert.style.transform = "translateY(100px)";
+      this.container.insertAdjacentElement('afterBegin', alert);
+    
+     this.animateElement(alert);
+     setTimeout(() => {
+        alert.remove();
+      }, 5000);
+  }
+
+    };

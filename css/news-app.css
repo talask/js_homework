@@ -14,3 +14,18 @@ h2{
 	text-transform: uppercase;
 	color: #666;
 }
+
+.alert {
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.1rem;
+}
+.alert.alert-danger {
+	background: rgba(255, 192, 203, 5);
+	/* background-color: #FFC0CB; */
+}
+
+.alert.alert-success {
+	background: rgba(102, 205, 170, 5);
+
+}

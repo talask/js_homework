@@ -21,11 +21,13 @@ function actionsFavorite(e) {
         news.addFavoriteNews(oneNews)
              .then(data => {
                 //message
-                M.toast({html: 'News successfully added', classes: 'rounded'});
+               // M.toast({html: 'News successfully added', classes: 'rounded'});
+              ui.createAlert({html: 'News successfully added', error: false});
              })
              .catch(err => {
                  //message
-                console.log(err);
+               // console.log(err);
+               ui.createAlert({html: 'Error: News has not been added', error:true});
              });
 
     }

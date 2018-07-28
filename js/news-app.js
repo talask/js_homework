@@ -74,7 +74,8 @@ function onChangeCountry (e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            data.articles.forEach((news, index) => ui.addNews(news, index));
+            //data.articles.forEach((news, index) => ui.addNews(news, index));
+            ui.showNews(data.articles);
             // save array news to news store
             newsStore.setNews(data.articles);
         })
@@ -93,7 +94,8 @@ function onSearch(e) {
             // Delete content
             ui.clearContainer();
             // scan obj
-            data.articles.forEach((news, index) => ui.addNews(news, index));
+            //data.articles.forEach((news, index) => ui.addNews(news, index));
+            ui.showNews(data.articles);
              // save array news to news store
              newsStore.setNews(data.articles);
             } else {
@@ -119,7 +121,8 @@ function onChangeCategory (e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                data.articles.forEach((news, index) => ui.addNews(news, index));
+                //data.articles.forEach((news, index) => ui.addNews(news, index));
+                ui.showNews(data.articles);
                 // save array news to news store
                  newsStore.setNews(data.articles);
             } else {
@@ -143,7 +146,8 @@ function onChangeSource(e) {
                 // Delete content
                 ui.clearContainer();
                 // scan obj
-                data.articles.forEach((news, index) => ui.addNews(news, index));
+               // data.articles.forEach((news, index) => ui.addNews(news, index));
+               ui.showNews(data.articles);
                 // save array news to news store
                 newsStore.setNews(data.articles);
             } else {
